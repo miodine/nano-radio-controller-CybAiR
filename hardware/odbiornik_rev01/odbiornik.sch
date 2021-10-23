@@ -1,0 +1,298 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L RF:NRF24L01_Breakout U6
+U 1 1 5FB506C9
+P 3250 2700
+F 0 "U6" H 3630 2746 50  0000 L CNN
+F 1 "NRF24L01_Breakout" H 3630 2655 50  0000 L CNN
+F 2 "RF_Module:nRF24L01_Breakout" H 3400 3300 50  0001 L CIN
+F 3 "http://www.nordicsemi.com/eng/content/download/2730/34105/file/nRF24L01_Product_Specification_v2_0.pdf" H 3250 2600 50  0001 C CNN
+	1    3250 2700
+	1    0    0    -1  
+$EndComp
+NoConn ~ 2750 3000
+$Comp
+L power:GND #PWR0103
+U 1 1 5FB506EE
+P 4800 5400
+F 0 "#PWR0103" H 4800 5150 50  0001 C CNN
+F 1 "GND" H 4805 5227 50  0000 C CNN
+F 2 "" H 4800 5400 50  0001 C CNN
+F 3 "" H 4800 5400 50  0001 C CNN
+	1    4800 5400
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR0104
+U 1 1 5FB506F7
+P 3250 3300
+F 0 "#PWR0104" H 3250 3050 50  0001 C CNN
+F 1 "GND" H 3255 3127 50  0000 C CNN
+F 2 "" H 3250 3300 50  0001 C CNN
+F 3 "" H 3250 3300 50  0001 C CNN
+	1    3250 3300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4700 1900 3250 1900
+Wire Wire Line
+	3250 1900 3250 2100
+Wire Wire Line
+	4700 1900 4700 3400
+Text GLabel 4400 3350 0    50   Input ~ 0
++5V_BR_BOARD_SUPPLY
+Wire Wire Line
+	4500 3350 4400 3350
+$Comp
+L custom_components:FS100A_RECEIV U5
+U 1 1 5FB675B4
+P 2300 4400
+F 0 "U5" H 2217 4775 50  0000 C CNN
+F 1 "FS100A_RECEIV" H 2217 4684 50  0000 C CNN
+F 2 "" H 2300 4750 50  0001 C CNN
+F 3 "" H 2300 4750 50  0001 C CNN
+	1    2300 4400
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	2600 4450 2600 4400
+$Comp
+L power:GND #PWR0109
+U 1 1 5FB6C806
+P 2700 4550
+F 0 "#PWR0109" H 2700 4300 50  0001 C CNN
+F 1 "GND" V 2705 4422 50  0000 R CNN
+F 2 "" H 2700 4550 50  0001 C CNN
+F 3 "" H 2700 4550 50  0001 C CNN
+	1    2700 4550
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	2600 4550 2700 4550
+Wire Wire Line
+	2600 4250 2700 4250
+$Comp
+L power:+5V #PWR0110
+U 1 1 5FB6C800
+P 2700 4250
+F 0 "#PWR0110" H 2700 4100 50  0001 C CNN
+F 1 "+5V" V 2715 4423 50  0000 C CNN
+F 2 "" H 2700 4250 50  0001 C CNN
+F 3 "" H 2700 4250 50  0001 C CNN
+	1    2700 4250
+	0    1    1    0   
+$EndComp
+Text Label 2450 2500 2    50   ~ 0
+NANO2_SPI_MISO
+Text Label 2450 2400 2    50   ~ 0
+NANO2_SPI_MOSI
+Text Label 2450 2700 2    50   ~ 0
+NANO2_SPI_CS1
+Text Label 2450 2600 2    50   ~ 0
+NANO2_SPI_SCK
+Text Label 3800 5100 2    50   ~ 0
+NANO2_SPI_SCK
+Text Label 3800 4800 2    50   ~ 0
+NANO2_SPI_CS1
+Text Label 3800 4900 2    50   ~ 0
+NANO2_SPI_MOSI
+Text Label 3800 5000 2    50   ~ 0
+NANO2_SPI_MISO
+$Comp
+L power:+5V #PWR0111
+U 1 1 5FB7D715
+P 4800 3200
+F 0 "#PWR0111" H 4800 3050 50  0001 C CNN
+F 1 "+5V" H 4815 3373 50  0000 C CNN
+F 2 "" H 4800 3200 50  0001 C CNN
+F 3 "" H 4800 3200 50  0001 C CNN
+	1    4800 3200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4500 3400 4500 3350
+$Comp
+L power:+5V #PWR0112
+U 1 1 5FB80FEF
+P 4500 3200
+F 0 "#PWR0112" H 4500 3050 50  0001 C CNN
+F 1 "+5V" H 4515 3373 50  0000 C CNN
+F 2 "" H 4500 3200 50  0001 C CNN
+F 3 "" H 4500 3200 50  0001 C CNN
+	1    4500 3200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4500 3200 4500 3350
+Connection ~ 4500 3350
+Wire Wire Line
+	4800 3200 4800 3400
+NoConn ~ 5100 3800
+NoConn ~ 5100 3900
+NoConn ~ 5100 4200
+Wire Wire Line
+	3800 4800 4100 4800
+NoConn ~ 4100 4100
+NoConn ~ 4100 4500
+NoConn ~ 5100 4400
+NoConn ~ 5100 4500
+NoConn ~ 5100 4600
+NoConn ~ 5100 4700
+NoConn ~ 5100 4800
+NoConn ~ 5100 4900
+NoConn ~ 5100 5000
+NoConn ~ 5100 5100
+Wire Wire Line
+	2450 2500 2750 2500
+Wire Wire Line
+	2450 2400 2750 2400
+Wire Wire Line
+	2450 2700 2750 2700
+Wire Wire Line
+	2450 2600 2750 2600
+Wire Wire Line
+	3900 4400 2600 4400
+Connection ~ 2600 4400
+Wire Wire Line
+	2600 4400 2600 4350
+Wire Wire Line
+	4100 4900 3800 4900
+Wire Wire Line
+	4100 5000 3800 5000
+Wire Wire Line
+	4100 5100 3800 5100
+Text Label 3800 4700 2    50   ~ 0
+NANO2_SPI_CE
+Wire Wire Line
+	4100 4700 3800 4700
+Text Label 2450 2900 2    50   ~ 0
+NANO2_SPI_CE
+Wire Wire Line
+	2750 2900 2450 2900
+Text GLabel 8450 4050 2    50   Input ~ 0
++5V_BR_BOARD_SUPPLY
+Wire Wire Line
+	8250 4050 8450 4050
+$Comp
+L Connector:Conn_01x02_Female J1
+U 1 1 600F032D
+P 6400 4150
+F 0 "J1" H 6292 4335 50  0000 C CNN
+F 1 "PRZYŁĄCZE_BATERII_9V" H 6292 4244 50  0000 C CNN
+F 2 "" H 6400 4150 50  0001 C CNN
+F 3 "~" H 6400 4150 50  0001 C CNN
+	1    6400 4150
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	7950 4350 7950 4450
+$Comp
+L power:GND #PWR0129
+U 1 1 60106A53
+P 8450 4450
+F 0 "#PWR0129" H 8450 4200 50  0001 C CNN
+F 1 "GND" V 8455 4322 50  0000 R CNN
+F 2 "" H 8450 4450 50  0001 C CNN
+F 3 "" H 8450 4450 50  0001 C CNN
+	1    8450 4450
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	8450 4450 7950 4450
+$Comp
+L Switch:SW_DPDT_x2 SW6
+U 2 1 6011FAE8
+P 7250 4150
+F 0 "SW6" H 7250 4435 50  0000 C CNN
+F 1 "SW_DPDT_x2" H 7250 4344 50  0000 C CNN
+F 2 "" H 7250 4150 50  0001 C CNN
+F 3 "~" H 7250 4150 50  0001 C CNN
+	2    7250 4150
+	1    0    0    -1  
+$EndComp
+$Comp
+L Regulator_Linear:L7805 U7
+U 1 1 600DF41D
+P 7950 4050
+F 0 "U7" H 7950 4292 50  0000 C CNN
+F 1 "L7805" H 7950 4201 50  0000 C CNN
+F 2 "" H 7975 3900 50  0001 L CIN
+F 3 "http://www.st.com/content/ccc/resource/technical/document/datasheet/41/4f/b3/b0/12/d4/47/88/CD00000444.pdf/files/CD00000444.pdf/jcr:content/translations/en.CD00000444.pdf" H 7950 4000 50  0001 C CNN
+	1    7950 4050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7650 4050 7450 4050
+Wire Wire Line
+	6600 4250 7000 4250
+Wire Wire Line
+	7000 4250 7000 4450
+Wire Wire Line
+	7000 4450 7950 4450
+Connection ~ 7950 4450
+Wire Wire Line
+	7050 4150 6600 4150
+NoConn ~ 7450 4250
+$Comp
+L Connector:Conn_01x03_Male J?
+U 1 1 5FF311E1
+P 3050 3900
+F 0 "J?" H 3158 4181 50  0000 C CNN
+F 1 "Conn_01x03_Male" H 3158 4090 50  0000 C CNN
+F 2 "" H 3050 3900 50  0001 C CNN
+F 3 "~" H 3050 3900 50  0001 C CNN
+	1    3050 3900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4600 5400 4700 5400
+Wire Wire Line
+	4800 5400 4700 5400
+Connection ~ 4700 5400
+$Comp
+L MCU_Module:Arduino_Nano_v2.x A2
+U 1 1 5FB506C3
+P 4600 4400
+F 0 "A2" H 4600 3311 50  0000 C CNN
+F 1 "Arduino_Nano_v2.x" H 4600 3220 50  0000 C CNN
+F 2 "Module:Arduino_Nano" H 4600 4400 50  0001 C CIN
+F 3 "https://www.arduino.cc/en/uploads/Main/ArduinoNanoManual23.pdf" H 4600 4400 50  0001 C CNN
+	1    4600 4400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4100 4000 3900 4000
+Wire Wire Line
+	3900 4000 3900 4400
+Wire Wire Line
+	4100 3800 3250 3800
+Wire Wire Line
+	4100 3900 3250 3900
+$Comp
+L power:GND #PWR?
+U 1 1 5FF39526
+P 3350 4000
+F 0 "#PWR?" H 3350 3750 50  0001 C CNN
+F 1 "GND" V 3355 3872 50  0000 R CNN
+F 2 "" H 3350 4000 50  0001 C CNN
+F 3 "" H 3350 4000 50  0001 C CNN
+	1    3350 4000
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3250 4000 3350 4000
+$EndSCHEMATC

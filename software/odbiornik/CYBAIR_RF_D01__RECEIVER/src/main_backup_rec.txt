@@ -1,0 +1,148 @@
+#include <SPI.h>
+#include <nRF24L01.h>
+#include <RF24.h>
+#include <RH_ASK.h>
+#include <Arduino.h>
+
+
+#define CE_PIN   9
+#define CSN_PIN 10
+#define TX_433_PIN 4
+#define RX_433_PIN 2
+
+const uint64_t pipe = 0xE8E8F0F0E1LL; // Default transmit pipe for 2.4GHz
+
+enum{
+    MODE_RADIO_24G = 0,
+    MODE_RADIO_433M
+};
+
+
+typedef enum STATUS_BYTE{
+    N_E_STOP = 0x80,
+    RADIO_433_SELECTED = 0x40,
+    BUTTON_J1_P = 0x20,
+    BUTTON_J2_P = 0x10,
+    BUTTON_S1_P = 0x08,
+    BUTTON_S2_P = 0x04,
+    BUTTON_S3_P = 0x02,
+    BUTTON_S4_P = 0x01
+} STATUS_BYTE;
+
+
+/*---( Declare objects )---*/
+RF24 radio_24G(CE_PIN, CSN_PIN); // Create a Radio 2.4 GHz
+RH_ASK radio_433M(2000, RX_433_PIN, TX_433_PIN , 5); // Create a radio 433 MHz
+
+uint8_t rx_data[9];
+uint8_t rx_data_len = sizeof(rx_data); // bcoz 433Mhz lib was written by a monke xd
+uint8_t len_tx_data = 9;
+uint8_t i = 0;
+
+
+void print_parse(uint8_t rx_buffer[9])
+{
+  if(rx_buffer[0] & N_E_STOP) Serial.println("STOPPED: NO\r\n");
+  else Serial.println("STOPPED: YES\r\n");
+
+  if(rx_buffer[0] & BUTTON_J1_P) Serial.println("JOY 1 SWITCH: 1\r\n");
+  else Serial.println("JOY 1 SWITCH: 0\r\n");
+
+  if(rx_buffer[0] & BUTTON_J2_P) Serial.println("JOY 2 SWITCH: 1\r\n");
+  else Serial.println("JOY 2 SWITCH: 0\r\n");
+
+  if(rx_buffer[0] & BUTTON_S1_P) Serial.println("OB 1 SWITCH: 1\r\n");
+  else Serial.println("OB 1 SWITCH: 0\r\n");
+
+  if(rx_buffer[0] & BUTTON_S2_P) Serial.println("OB 2 SWITCH: 1\r\n");
+  else Serial.println("OB 2 SWITCH: 0\r\n");
+
+  if(rx_buffer[0] & BUTTON_S3_P) Serial.println("OB 3 SWITCH: 1\r\n");
+  else Serial.println("OB 3 SWITCH: 0\r\n");
+  
+  if(rx_buffer[0] & BUTTON_S4_P) Serial.println("OB 3 SWITCH: 1\r\n");
+  else Serial.println("OB 3 SWITCH: 0\r\n");
+
+  /* 
+  ADD BTN/FLAG STATE DEPARSIONG HERE 
+  */
+
+  uint16_t joy_status = ((uint16_t)rx_buffer[1] << 8 | rx_buffer[2]);
+  Serial.println("JOY 1 X: ");
+  Serial.print(joy_status);
+  Serial.println("\r\n");
+
+  joy_status = ((uint16_t)rx_buffer[3] << 8 | rx_buffer[4]);
+  Serial.println("JOY 1 Y: ");
+  Serial.print(joy_status);
+  Serial.println("\r\n");
+
+  joy_status = ((uint16_t)rx_buffer[5] << 8 | rx_buffer[6]);
+  Serial.println("JOY 2 X: ");
+  Serial.print(joy_status);
+  Serial.println("\r\n");
+
+  joy_status = ((uint16_t)rx_buffer[7] << 8 | rx_buffer[8]);
+  Serial.println("JOY 2 Y: ");
+  Serial.print(joy_status);
+  Serial.println("\r\n");
+
+}
+
+void setup()   
+{
+  Serial.begin(9600);
+  delay(1000);
+
+  Serial.println("Nrf24L01 Receiver Starting");
+  radio_24G.begin();
+  radio_24G.setDataRate(RF24_250KBPS);
+  radio_24G.openReadingPipe(1, pipe);
+  radio_24G.startListening();
+
+  if(!radio_433M.init())
+  {
+    Serial.println("initialisation failed!");
+  }
+
+}
+
+
+void loop()  
+{
+  rx_data[0] = 0x00;
+  if (radio_24G.available())
+  {
+    {
+      //Fetch the data payload
+      radio_24G.read(rx_data, sizeof(rx_data));
+      print_parse(rx_data);
+
+      Serial.println("----------\r\n");
+    }
+  }
+  else
+  {
+    //Serial.println("No radio available");
+  }
+
+
+
+  //if(radio_433M.recv(rx_data,&rx_data_len))
+  {
+    //Serial.print(rx_data[0]);
+  }
+
+  
+  
+
+  
+ 
+
+
+}//--(end main loop )-
+
+/*---( Declare User-written Functions )---*/
+
+//NONE
+//*******( THE END )*********
